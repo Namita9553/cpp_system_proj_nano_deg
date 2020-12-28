@@ -212,7 +212,7 @@ float LinuxParser::CpuUtilization(int pid) {
 // REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::Command(int pid) {
   string line;
-  std::ifstream filestream(kProcDirectory + std::to_string(pid) +
+  std::ifstream filestream(kProcDirectory +"/"+ std::to_string(pid) +
                            kCmdlineFilename);
   if (filestream.is_open()) std::getline(filestream, line);
   return line;
@@ -241,7 +241,7 @@ string LinuxParser::Ram(int pid) {
 // REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::Uid(int pid) {
   string line, key, val;
-  std::ifstream filestream(kProcDirectory + std::to_string(pid) +
+  std::ifstream filestream(kProcDirectory+"/" + std::to_string(pid) +
                            kStatusFilename);
   if (filestream.is_open()) {
     while (std::getline(filestream, line)) {
